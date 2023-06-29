@@ -1,9 +1,10 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import { bgColor, hoverBackground } from "../theme/getThemeValues";
 import NavList from "../components/Navbar/NavList";
 import ProfilePic from "../assests/Images/profileImage.jpg";
+import ProfilePicture from "../components/Profile/ProfilePicture";
 
 const Container = styled.div`
   width: 100vw;
@@ -28,6 +29,8 @@ const MainContainer = styled.div`
   justify-content: flex-start;
   /* background: green; */
   flex-grow: 1;
+  min-height: 100%;
+  overflow-y: auto;
 `;
 
 const WrapperOutlet = styled.div`
@@ -35,6 +38,7 @@ const WrapperOutlet = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  /* overflow-y: auto; */
   /* background: yellow; */
 `;
 
@@ -62,11 +66,11 @@ const ProfileContainer = styled.div`
   }
 `;
 
-const ProfileIconContainer = styled.img`
-  width: 38px;
-  height: 38px;
-  border-radius: 100%;
-`;
+// const ProfileIconContainer = styled.img`
+//   width: 38px;
+//   height: 38px;
+//   border-radius: 100%;
+// `;
 
 const NameContainer = styled.div`
   margin-left: 10px;
@@ -77,7 +81,8 @@ const NameContainer = styled.div`
   height: 100%;
   ${(props) => props.theme.typography.caption}
   p {
-    color: ${(props) => props.theme.palette.grey["600"]};
+    color: ${(props) => props.theme.palette.text.light};
+    /* color: ${(props) => props.theme.palette.grey["600"]}; */
   }
   div {
     ${(props) => props.theme.typography.body2}
@@ -86,6 +91,13 @@ const NameContainer = styled.div`
 `;
 
 const DashboardLayout = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname === "/") {
+      navigate("home");
+    }
+  }, [location, navigate]);
   return (
     <Container>
       <SideContainer>
@@ -94,7 +106,7 @@ const DashboardLayout = () => {
             <NavList />
           </NavContainer>
           <ProfileContainer>
-            <ProfileIconContainer src={ProfilePic} />
+            <ProfilePicture src={ProfilePic} />
             <NameContainer>
               <div>Deep Solanki</div>
               <p>@_deepsolanki</p>

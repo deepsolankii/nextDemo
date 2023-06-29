@@ -138,15 +138,35 @@ const palette = {
   light: {
     ...COMMON,
     mode: "light",
-    text: { primary: GREY[800], secondary: GREY[600], disabled: GREY[500] },
-    background: { paper: "#fff", default: "#fff", neutral: GREY[200] },
+    text: {
+      primary: GREY[800],
+      secondary: GREY[600],
+      disabled: GREY[500],
+      light: "#536b71",
+    },
+    background: {
+      paper: "#fff",
+      default: "#fff",
+      neutral: GREY[200],
+      light: alpha("#ffffff", 0.8),
+    },
     action: { active: GREY[600], ...COMMON.action },
   },
   dark: {
     ...COMMON,
     mode: "dark",
-    text: { primary: "#fff", secondary: GREY[500], disabled: GREY[600] },
-    background: { paper: GREY[800], default: GREY[900], neutral: GREY[500_16] },
+    text: {
+      primary: "#fff",
+      secondary: GREY[500],
+      disabled: GREY[600],
+      light: "#536b71",
+    },
+    background: {
+      paper: GREY[800],
+      default: GREY[900],
+      neutral: GREY[500_16],
+      light: alpha(GREY["900"], 0.8),
+    },
     action: { active: GREY[500], ...COMMON.action },
   },
 };

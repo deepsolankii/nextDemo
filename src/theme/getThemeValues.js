@@ -8,7 +8,7 @@ module.exports.hoverBackground = (props) =>
   `background:${props.theme.palette.grey["50032"]}`;
 
 module.exports.primaryBackground = (props) =>
-  `background-color:${props.theme.palette.primary.main}`;
+  `background-color:${props.theme.palette.primary.light}`;
 
 module.exports.primaryColor = (props) =>
   `color:${props.theme.palette.primary.main}`;
